@@ -29,8 +29,10 @@ const app= Vue.createApp({
         }
     },
     methods: {
-        deleteTask(targetId){
-            this.task =this.tasks.filter((task) => targetId !== task.id)
+        deleteTasks(targetId){
+            this.tasks=this.tasks.filter(task=>{
+               return  targetId!==task.id
+            })
         },
         addTask(){
             if(!this.newTask.length) return;
