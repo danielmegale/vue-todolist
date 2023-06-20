@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body id="root" class="container">
-    <header>
-        <h1>ToDoList</h1>
-    </header>
-    <main>
-        <ul>
-            <li v-for="task in tasks" >
-                <div @click="toggleTask(task.id)" :class="{'text-through':task.done}">{{task.text}}</div>
-                <button type="button" @click="deleteTask(task.id)">X</button>
-            </li>
-            <li>
-                <div>
-                    <input v-model.trim="newTask" type="text" placeholder="Inserisci nuova Task">
-                    <button type="button" @click="addTask()">Invia</button>
-                </div>
-            </li>
-        </ul>
-    </main>
+<body class="container">
+    <div id="root">
+        <header>
+            <h1>ToDoList</h1>
+        </header>
+        <main>
+            <ul>
+                <li v-for="task in tasks" >
+                    <div @click="toggleTask(task.id)" :class="{'text-through':task.done}">{{task.text}}</div>
+                    <button type="button" @click="deleteTask(task.id)">X</button>
+                </li>
+                <li>
+                    <div>
+                        <input v-model.trim="newTask" type="text" placeholder="Inserisci nuova Task" @keyup.enter="addTask">
+                        <button  type="button" @click="addTask()">Invia</button>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
