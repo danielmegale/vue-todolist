@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body id="root">
-    <h1></h1>
-    <div></div>
+<body id="root" class="container">
+    <header>
+        <h1>ToDoList</h1>
+    </header>
+    <main>
+        <ul>
+            <li v-for="task in tasks" >
+                <div @click="toggleTask(task.id)" :class="{'text-through':task.done}">{{task.text}}</div>
+                <button type="button" @click="deleteTask(task.id)">X</button>
+            </li>
+            <li>
+                <div>
+                    <input v-model.trim="newTask" type="text" placeholder="Inserisci nuova Task">
+                    <button type="button" @click="addTask()">Invia</button>
+                </div>
+            </li>
+        </ul>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
